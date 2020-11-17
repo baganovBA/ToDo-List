@@ -36,17 +36,19 @@ h1{
     height: 100%;
     position: absolute;
     right: 30px;
+    top:0px;
+
 }
 .conteiner_input{
+    border: 1px solid #C4C4C4;
+    border-radius: 10px;
+    width: 286px;
+    margin: auto;
     margin-bottom: 18px;
 }
 .input{
-    margin: auto;
     box-sizing: border-box;
-    width: 286px;
     height: 40px;
-    border: 1px solid #C4C4C4;
-    border-radius: 10px;
     display: flex;
     justify-content: space-around;
 }
@@ -66,14 +68,18 @@ h1{
 }
 .input_cross_button{
     border: 0;
+    outline: none;
+    background: none;
 }
 .conteiner_add_button{
     margin-bottom: 19px;
 }
 .add_button{
     border: 0;
-    outline: 0;
+    outline: none;
     outline-style: none;
     outline-width: 0px;
     outline-color: none;
+    background:  none;
+
 }
