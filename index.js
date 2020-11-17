@@ -17,6 +17,7 @@ addButton.addEventListener('click',(event)=>{
     num +=1; 
     
     console.log(crossButtonsAll);
+    console.log(conteinerInput.children.length);
     crossButtonsAll = document.querySelectorAll('.input_cross');
 
     crossButtonsAll.forEach((crossButton, index, array) => {
@@ -24,7 +25,9 @@ addButton.addEventListener('click',(event)=>{
         crossButton.addEventListener('click', (event) => {
             event.preventDefault();
             console.log(event);
-            crossButton.parentElement.remove();
+            if (conteinerInput.children.length > 1){
+                crossButton.parentElement.remove();
+            }
     
         })
     })
