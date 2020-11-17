@@ -58,33 +58,11 @@ sortButton.addEventListener('click', (event)=>{
 
     console.log(inputData);
 
-    let allInputDiv = document.querySelectorAll(".input");
-    console.log(allInputDiv);
-
-
-    allInputDiv.forEach((el,index,array) => {
-        console.log(el)
-        
-        const inputDiv = document.querySelector('.input');
-    conteinerInput = document.querySelector('.conteiner_input');
-    innerInput = inputDiv.innerHTML;
-    divInput = document.createElement('div');
-    divInput.classList.add('input');
-    divInput.innerHTML = innerInput;
-    conteinerInput.append(divInput);
-    el.remove();
-    });
-
-    allInputDiv = document.querySelectorAll(".input");
-    console.log(allInputDiv);
-
-    allInputDiv.forEach((el,index,array)=>{
-        const inputStr = document.querySelector(".input_string")
-        console.log(inputStr);
-        inputStr.value = inputData[index];
-        console.log(divInput);
-
-    });
+    let allInputString = document.querySelectorAll(".input_string");
+    console.log(allInputString);
+    allInputString.forEach((inputString, index, array) =>{
+        inputString.value = inputData[index];
+    })
 
 
 
