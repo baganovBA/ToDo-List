@@ -1,6 +1,6 @@
 # To-Do List
 
-Whis function:
+With function:
   1.Add new box-string
   2.Remove selected box-string
   3.Sort content box-strings by rule Unicode
