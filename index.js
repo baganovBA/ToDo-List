@@ -14,8 +14,67 @@ addButton.addEventListener('click',(event)=>{
     divInput.innerHTML = innerInput;
     conteinerInput.append(divInput);
     console.log(divInput);
-    num +=1; 
+    num +=1;
+
+    const allInputDiv = document.querySelectorAll('.input');
+    // allInputDiv.forEach((inputDiv) =>{
+    //     inputDiv.setAttribute('draggable', 'true');
+    // });
+
+    const allInputDrag = document.querySelectorAll('.input_drag')
+
+    allInputDrag.forEach((inputDrag) =>{
+        inputDrag.addEventListener('mouseover',(event) =>{
+            inputDrag.parentElement.setAttribute('draggable', 'true');
+
+        });
+        inputDrag.addEventListener('mouseout', (event) =>{
+            inputDrag.parentElement.removeAttribute('draggable');
+        });
+
+    })
     
+    
+    
+    allInputDiv.forEach((inputDiv) =>{
+        inputDiv.addEventListener('dragstart',(event) =>{
+            const inp = inputDiv.querySelector('input')
+            event.target.classList.add('selected');
+            inp.classList.add('selected');
+            
+        });
+
+        inputDiv.addEventListener('dragend',(event) =>{
+            const inp = inputDiv.querySelector('input');
+            event.target.classList.remove('selected');
+            inp.classList.remove('selected');
+        })
+
+        inputDiv.addEventListener('dragover',(event) =>{
+            event.preventDefault();
+            console.log(event);
+            // event.srcElement.classList.add('gray')
+            const activeInputDiv = conteinerInput.querySelector('.selected');
+            const currentInputDiv = event.target.parentElement;
+            // console.log(currentInputDiv);
+
+            const isMoveable = activeInputDiv !== currentInputDiv 
+            && currentInputDiv.classList.contains('.input');
+
+            if(isMoveable){
+                return;
+            }
+
+            const nextInputDiv = (currentInputDiv === activeInputDiv.nextElementSibling) ?
+            currentInputDiv.nextElementSibling : currentInputDiv;
+
+            conteinerInput.insertBefore(activeInputDiv, nextInputDiv);
+        })
+    });
+
+    
+
+
     console.log(crossButtonsAll);
     console.log(conteinerInput.children.length);
     crossButtonsAll = document.querySelectorAll('.input_cross');
@@ -28,12 +87,8 @@ addButton.addEventListener('click',(event)=>{
             if (conteinerInput.children.length > 1){
                 crossButton.parentElement.remove();
             }
-    
         })
     })
-
-    
-
 });
 
 const sortButton = document.querySelector('.roll-button');

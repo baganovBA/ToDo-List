@@ -61,6 +61,7 @@ h1{
 .input_string{
     border: none;
     width: 100%;
+   
 }
 .input_cross{
     
@@ -82,4 +83,16 @@ h1{
     outline-color: none;
     background:  none;
 
+}
+.selected {
+    opacity: 0.6;
+    background: yellow;
+  }
+
+.input_drag{
+    cursor: move;
+}
+
+.gray{
+    background: gray;
 }
