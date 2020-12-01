@@ -38,26 +38,25 @@ addButton.addEventListener('click',(event)=>{
     
     allInputDiv.forEach((inputDiv) =>{
         inputDiv.addEventListener('dragstart',(event) =>{
-            const inp = inputDiv.querySelector('input')
-            event.target.classList.add('selected');
-            inp.classList.add('selected');
-            
+
+            event.currentTarget.classList.add('yellow');
         });
 
         inputDiv.addEventListener('dragend',(event) =>{
-            const inp = inputDiv.querySelector('input');
-            event.target.classList.remove('selected');
-            inp.classList.remove('selected');
+            
+            event.target.classList.remove('selected', 'yellow');
         })
 
         inputDiv.addEventListener('dragover',(event) =>{
             event.preventDefault();
             console.log(event);
-            // event.srcElement.classList.add('gray')
-            const activeInputDiv = conteinerInput.querySelector('.selected');
-            const currentInputDiv = event.target.parentElement;
-            // console.log(currentInputDiv);
-
+           
+            console.log('dragover',event.currentTarget.parentElement.children);
+           
+            const activeInputDiv = conteinerInput.querySelector('.yellow');
+            activeInputDiv.classList.add('selected');
+            const currentInputDiv = event.currentTarget;
+        
             const isMoveable = activeInputDiv !== currentInputDiv 
             && currentInputDiv.classList.contains('.input');
 
@@ -69,6 +68,9 @@ addButton.addEventListener('click',(event)=>{
             currentInputDiv.nextElementSibling : currentInputDiv;
 
             conteinerInput.insertBefore(activeInputDiv, nextInputDiv);
+
+
+
         })
     });
 
@@ -81,6 +83,14 @@ addButton.addEventListener('click',(event)=>{
 
     crossButtonsAll.forEach((crossButton, index, array) => {
         console.log(crossButton);
+        crossButton.addEventListener('mouseover', (event) => {
+           event.target.src = "http://127.0.0.1:5500/baganovBA.github.io/img/cross_active.png";
+
+        });
+        crossButton.addEventListener('mouseout', (event) => {
+           event.target.src = "http://127.0.0.1:5500/baganovBA.github.io/img/cross.png";
+
+        });
         crossButton.addEventListener('click', (event) => {
             event.preventDefault();
             console.log(event);
@@ -90,6 +100,24 @@ addButton.addEventListener('click',(event)=>{
         })
     })
 });
+
+const rollImg = document.querySelector('.roll-img');
+console.log("img", rollImg.src);
+rollImg.addEventListener('mouseover', event =>{
+    if(rollImg.src === "http://127.0.0.1:5500/baganovBA.github.io/img/roll.png"){
+        rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/roll_active.png"
+    }else{
+        rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/unroll_active.png"
+    }
+})
+rollImg.addEventListener('mouseout', event =>{
+    if(rollImg.src === "http://127.0.0.1:5500/baganovBA.github.io/img/roll_active.png"){
+        rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/roll.png"
+    }else{
+        rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/unroll.png"
+    }
+})
+
 
 const sortButton = document.querySelector('.roll-button');
 sortButton.addEventListener('click', (event)=>{
@@ -107,11 +135,11 @@ sortButton.addEventListener('click', (event)=>{
 
     });
     console.log(inputData);
-    const rollImg = document.querySelector('.roll-img');
+    // const rollImg = document.querySelector('.roll-img');
     console.log(rollImg.src);
 
 
-    if(rollImg.src === "http://127.0.0.1:5500/baganovBA.github.io/img/roll.png"){
+    if(rollImg.src === "http://127.0.0.1:5500/baganovBA.github.io/img/roll_active.png"){
         inputData.sort((a,b) => {
             if(a > b) {
                 return 1;
@@ -121,7 +149,7 @@ sortButton.addEventListener('click', (event)=>{
                 return 0;
             }
         });
-    rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/unroll.png"
+    rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/unroll_active.png"
     }else {
         inputData.sort((a,b) => {
             if(a < b) {
@@ -132,7 +160,7 @@ sortButton.addEventListener('click', (event)=>{
                 return 0;
             }
         });
-    rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/roll.png"
+    rollImg.src = "http://127.0.0.1:5500/baganovBA.github.io/img/roll_active.png"
     };
 
     console.log(inputData);

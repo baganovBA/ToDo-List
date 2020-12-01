@@ -51,6 +51,7 @@ h1{
     height: 40px;
     display: flex;
     justify-content: space-around;
+    
 }
 
 .input_drag{
@@ -61,7 +62,8 @@ h1{
 .input_string{
     border: none;
     width: 100%;
-   
+    background-color: transparent;
+    user-select: none
 }
 .input_cross{
     
@@ -71,6 +73,7 @@ h1{
     border: 0;
     outline: none;
     background: none;
+    user-select: none;
 }
 .conteiner_add_button{
     margin-bottom: 19px;
@@ -84,15 +87,21 @@ h1{
     background:  none;
 
 }
-.selected {
-    opacity: 0.6;
-    background: yellow;
-  }
 
 .input_drag{
     cursor: move;
+    user-select: none
 }
 
-.gray{
+.yellow{
+    background: yellow;
+}
+.selected {
+    opacity: 0.6;
     background: gray;
 }
+
+/* .input_drag:hover.conteiner-input{
+    background: yellow;
+    
+} */
